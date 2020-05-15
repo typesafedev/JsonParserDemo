@@ -27,4 +27,4 @@ jobs:
       run: dotnet test --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
     - name: Test Report
       run: |
-        reportgenerator -reports:$(Build.SourcesDirectory)/tests/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines;Cobertura
+        reportgenerator -reports:tests/**/coverage.cobertura.xml -targetdir:CodeCoverage -reporttypes:HtmlInline_AzurePipelines;Cobertura
