@@ -28,4 +28,8 @@ jobs:
     - name: Report
       run: |
         reportgenerator "-reports:*Tests/**/coverage.cobertura.xml" "-targetdir:coverage-reports"
-
+    - name: Artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: Coverage
+        path: coverage-reports
