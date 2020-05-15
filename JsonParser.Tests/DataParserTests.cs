@@ -12,11 +12,11 @@ namespace JsonParser.Tests
             var json = "{\"data\":\"key = IAfpK, age = 58, key = WNVdi, age = 64, key = jp9zt, age = 47\"}";
             var sut = new DataParser();
 
-            var dict = sut.Parse(json);
+            var seq = sut.Parse(json);
 
-            dict["IAfpK"].ShouldBe(58);
-            dict["WNVdi"].ShouldBe(64);
-            dict["jp9zt"].ShouldBe(47);
+            seq.Single(s => s.Id == "IAfpK").Age.ShouldBe(58);
+            seq.Single(s => s.Id == "WNVdi").Age.ShouldBe(64);
+            seq.Single(s => s.Id == "jp9zt").Age.ShouldBe(47);
         }
 
         [Fact]
@@ -25,9 +25,33 @@ namespace JsonParser.Tests
             var json = "{\"data\":\"key = IAfpK, age = 58, key = WNVdi, age = 64, key = jp9zt, age = 47\"}";
             var sut = new DataParser();
 
-            var dict = sut.Parse(json);
+            var seq = sut.Parse(json);
 
-            dict.Where(kvp => kvp.Value > 50).Count().ShouldBe(2);
+            seq.Where(s => s.Age > 50).Count().ShouldBe(2);
+        }
+
+        [Fact]
+        public void ShouldParseExampleWithLinq()
+        {
+            var json = "{\"data\":\"key = IAfpK, age = 58, key = WNVdi, age = 64, key = jp9zt, age = 47\"}";
+            var sut = new DataParser();
+
+            var seq = sut.ParseWithLinq(json);
+
+            seq.Single(s => s.Id == "IAfpK").Age.ShouldBe(58);
+            seq.Single(s => s.Id == "WNVdi").Age.ShouldBe(64);
+            seq.Single(s => s.Id == "jp9zt").Age.ShouldBe(47);
+        }
+
+        [Fact]
+        public void ShouldParseExampleWithLinqAndFilter()
+        {
+            var json = "{\"data\":\"key = IAfpK, age = 58, key = WNVdi, age = 64, key = jp9zt, age = 47\"}";
+            var sut = new DataParser();
+
+            var seq = sut.ParseWithLinq(json);
+
+            seq.Where(s => s.Age > 50).Count().ShouldBe(2);
         }
     }
 }
