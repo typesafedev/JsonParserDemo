@@ -25,6 +25,3 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
-    - name: Test Report
-      run: |
-        reportgenerator -reports:**/coverage.cobertura.xml -targetdir:CodeCoverage -reporttypes:HtmlInline_AzurePipelines;Cobertura
