@@ -4,6 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <IncludesSymbol>true</IncludesSymbol>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageDescription>Package to parse json of a specific shape</PackageDescription>
+    <RepositoryUrl>https://github.com/typesafedev/JsonParserDemo</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
