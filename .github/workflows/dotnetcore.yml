@@ -48,4 +48,4 @@ jobs:
       - name: Setup custom nuget source
         run: dotnet nuget add source "https://nuget.pkg.github.com/typesafedev/index.json" --name "GitHub"
       - name: Push package to Github Package Registry
-        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source GitHub 
+        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.GPR_TOKEN }} --source GitHub 
