@@ -50,7 +50,6 @@ jobs:
           source-url: https://nuget.pkg.github.com/typesafedev/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release --no-restore
       - name: Create the package
         run: dotnet pack --configuration Release
       - name: Publish the package to GPR
