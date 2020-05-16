@@ -43,11 +43,16 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      - name: Pack nuget package
-        run: dotnet pack --configuration Release
-      - name: Setup custom nuget source
-        run: dotnet nuget add source "https://nuget.pkg.github.com/typesafedev/index.json" --name "GitHub"
-      - name: Push package to Github Package Registry
+      # Authenticates packages to push to GPR
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.202' # SDK Version to use.
+          source-url: https://nuget.pkg.github.com/typesafedev/index.json
         env:
-          GPR_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        run: dotnet nuget push "**/*.nupkg" --api-key $GPR_AUTH_TOKEN --source "GitHub" --no-symbols true
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: dotnet build --configuration Release --no-restore
+      - name: Create the package
+        run: dotnet pack --configuration Release
+      - name: Publish the package to GPR
+        run: dotnet nuget push **/*.nupkg
+      
