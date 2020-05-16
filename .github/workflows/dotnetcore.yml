@@ -49,5 +49,5 @@ jobs:
         run: dotnet nuget add source "https://nuget.pkg.github.com/typesafedev/index.json" --name "GitHub"
       - name: Push package to Github Package Registry
         env:
-          GPR_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+          GPR_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: dotnet nuget push "**/*.nupkg" --api-key $GPR_AUTH_TOKEN --source "GitHub" --no-symbols true
