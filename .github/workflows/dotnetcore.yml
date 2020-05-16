@@ -25,6 +25,8 @@ jobs:
       run: dotnet tool install -g dotnet-reportgenerator-globaltool
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    - name: Pack
+      run: dotnet pack --configuration Release
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
     - name: Report
