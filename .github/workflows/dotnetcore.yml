@@ -4,9 +4,10 @@ on:
   push:
     branches: [ master, develop ]
   pull_request:
-    branches: [ master, develop ]
+    branches:
+      - "*"
 env:
-  DOTNET_VERSION: '3.1.202'           # set this to the dot net version to use
+  DOTNET_VERSION: "3.1.202"           # set this to the dot net version to use
 jobs:
   build:
 
