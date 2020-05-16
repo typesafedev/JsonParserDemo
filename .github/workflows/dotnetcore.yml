@@ -46,4 +46,4 @@ jobs:
       - name: Pack nuget package
         run: dotnet pack --configuration Release
       - name: Push package to Github Package Registry
-        run: dotnet nuget push "**/*.nupkg" --source "github" 
+        run: dotnet nuget push "**/*.nupkg" --api-key=${{ secrets.GITHUB_TOKEN }} --source "github" 
