@@ -14,3 +14,4 @@
   - Uploads all repeortgenerator artifacts into build
   - https://github.com/actions/setup-dotnet
   - https://github.com/Azure/webapps-deploy
+  - https://github.com/Azure/actions-workflow-samples/blob/master/AppService/asp.net-core-webapp-on-azure.yml
