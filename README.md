@@ -12,4 +12,5 @@
   - Runs all tests in repo and produce raw code coverage file in coverage.cobertura.xml
   - Runs reportgenerator to process coverage.cobertura.xml into human readable form
   - Uploads all repeortgenerator artifacts into build
-  = https://github.com/actions/setup-dotnet
+  - https://github.com/actions/setup-dotnet
+  - https://github.com/Azure/webapps-deploy
