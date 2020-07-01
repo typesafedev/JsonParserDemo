@@ -32,5 +32,4 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
     testRunTitle: 'Unit Tests'
